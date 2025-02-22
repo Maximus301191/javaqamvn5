@@ -8,7 +8,7 @@ public class RadioTest {
     @Test
 
     public void shouldSetRadioStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
 
         radio.setCurrentRadioStation(5);
 
@@ -16,6 +16,15 @@ public class RadioTest {
         int actual = radio.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+
+    public void ShouldSetMinMax() {
+        Radio radio = new Radio(0, 29);
+
+        Assertions.assertEquals(0, radio.getminRadioStation());
+        Assertions.assertEquals(29, radio.getmaxRadioStation());
     }
 
     @Test
