@@ -8,7 +8,7 @@ public class RadioTest {
     @Test
 
     public void shouldShowMaxStation() {
-        Radio radio = new Radio(0, 10);
+        Radio radio = new Radio(10);
 
         int expected = 10;
         int actual = radio.getTotalRadioStation();
@@ -19,7 +19,7 @@ public class RadioTest {
     @Test
 
     public void shouldSetRadioStation() {
-        Radio radio = new Radio(0, 10);
+        Radio radio = new Radio(10);
 
         radio.setCurrentRadioStation(5);
 
@@ -32,18 +32,21 @@ public class RadioTest {
     @Test
 
     public void ShouldSetMinMax() {
-        Radio radio = new Radio(0, 29, 0, 100);
+        Radio radio = new Radio();
 
         Assertions.assertEquals(0, radio.getMinRadioStation());
-        Assertions.assertEquals(29, radio.getMaxRadioStation());
+        Assertions.assertEquals(9, radio.getMaxRadioStation());
         Assertions.assertEquals(100, radio.getMaxVolume());
         Assertions.assertEquals(0, radio.getMinVolume());
+        Assertions.assertEquals(10, radio.getTotalRadioStation());
+        Assertions.assertEquals(0, radio.getCurrentVolume());
+        Assertions.assertEquals(0, radio.getCurrentRadioStation());
     }
 
     @Test
 
     public void SetStationLessMin() {
-        Radio radio = new Radio(0, 30);
+        Radio radio = new Radio(30);
 
         radio.setCurrentRadioStation(-1);
 
@@ -56,7 +59,7 @@ public class RadioTest {
     @Test
 
     public void SetStationAfterMax() {
-        Radio radio = new Radio(0, 30);
+        Radio radio = new Radio(30);
 
         radio.setCurrentRadioStation(30);
 
@@ -69,7 +72,7 @@ public class RadioTest {
     @Test
 
     public void nextStation() {
-        Radio radio = new Radio(0, 30);
+        Radio radio = new Radio(30);
 
         radio.setCurrentRadioStation(5);
         radio.nextRadioStation();
@@ -83,7 +86,7 @@ public class RadioTest {
     @Test
 
     public void nextStationUpBorder() {
-        Radio radio = new Radio(0, 30);
+        Radio radio = new Radio(30);
 
         radio.setCurrentRadioStation(29);
         radio.nextRadioStation();
@@ -97,7 +100,7 @@ public class RadioTest {
     @Test
 
     public void prevStation() {
-        Radio radio = new Radio(0, 30);
+        Radio radio = new Radio(30);
 
         radio.setCurrentRadioStation(5);
         radio.prevRadioStation();
@@ -111,7 +114,7 @@ public class RadioTest {
     @Test
 
     public void prevStationDownBorder() {
-        Radio radio = new Radio(0, 30);
+        Radio radio = new Radio(30);
 
         radio.setCurrentRadioStation(0);
         radio.prevRadioStation();
@@ -126,7 +129,7 @@ public class RadioTest {
 
     public void increaseVolume() {
 
-        Radio radio = new Radio(0, 10, 0, 100);
+        Radio radio = new Radio();
 
         radio.setCurrentVolume(50);
         radio.VolumeUp();
@@ -141,7 +144,7 @@ public class RadioTest {
 
     public void setVolumeAfterMax() {
 
-        Radio radio = new Radio(0, 10, 0, 100);
+        Radio radio = new Radio();
 
         radio.setCurrentVolume(101);
 
@@ -155,7 +158,7 @@ public class RadioTest {
 
     public void setVolumeLessMin() {
 
-        Radio radio = new Radio(0, 10, 0, 100);
+        Radio radio = new Radio();
 
         radio.setCurrentVolume(-1);
 
@@ -169,7 +172,7 @@ public class RadioTest {
 
     public void increaseVolumeMoreMax() {
 
-        Radio radio = new Radio(0, 10, 0, 100);
+        Radio radio = new Radio();
 
         radio.setCurrentVolume(100);
         radio.VolumeUp();
@@ -184,7 +187,7 @@ public class RadioTest {
 
     public void decreaseVolume() {
 
-        Radio radio = new Radio(0, 10, 0, 100);
+        Radio radio = new Radio();
 
         radio.setCurrentVolume(50);
         radio.VolumeDown();
@@ -199,7 +202,7 @@ public class RadioTest {
 
     public void decreaseVolumeLessMin() {
 
-        Radio radio = new Radio(0, 10, 0, 100);
+        Radio radio = new Radio();
 
         radio.setCurrentVolume(0);
         radio.VolumeDown();
