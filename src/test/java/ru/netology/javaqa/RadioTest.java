@@ -8,7 +8,7 @@ public class RadioTest {
     @Test
 
     public void shouldShowMaxStation() {
-        Radio radio = new Radio(10);
+        Radio radio = new Radio();
 
         int expected = 10;
         int actual = radio.getTotalRadioStation();
@@ -19,7 +19,7 @@ public class RadioTest {
     @Test
 
     public void shouldSetRadioStation() {
-        Radio radio = new Radio(10);
+        Radio radio = new Radio();
 
         radio.setCurrentRadioStation(5);
 
@@ -46,7 +46,7 @@ public class RadioTest {
     @Test
 
     public void SetStationLessMin() {
-        Radio radio = new Radio(30);
+        Radio radio = new Radio();
 
         radio.setCurrentRadioStation(-1);
 
@@ -59,7 +59,7 @@ public class RadioTest {
     @Test
 
     public void SetStationAfterMax() {
-        Radio radio = new Radio(30);
+        Radio radio = new Radio();
 
         radio.setCurrentRadioStation(30);
 
@@ -72,7 +72,7 @@ public class RadioTest {
     @Test
 
     public void nextStation() {
-        Radio radio = new Radio(30);
+        Radio radio = new Radio();
 
         radio.setCurrentRadioStation(5);
         radio.nextRadioStation();
@@ -86,9 +86,9 @@ public class RadioTest {
     @Test
 
     public void nextStationUpBorder() {
-        Radio radio = new Radio(30);
+        Radio radio = new Radio();
 
-        radio.setCurrentRadioStation(29);
+        radio.setCurrentRadioStation(9);
         radio.nextRadioStation();
 
         int expected = 0;
@@ -100,7 +100,7 @@ public class RadioTest {
     @Test
 
     public void prevStation() {
-        Radio radio = new Radio(30);
+        Radio radio = new Radio();
 
         radio.setCurrentRadioStation(5);
         radio.prevRadioStation();
@@ -114,12 +114,12 @@ public class RadioTest {
     @Test
 
     public void prevStationDownBorder() {
-        Radio radio = new Radio(30);
+        Radio radio = new Radio();
 
         radio.setCurrentRadioStation(0);
         radio.prevRadioStation();
 
-        int expected = 29;
+        int expected = 9;
         int actual = radio.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
